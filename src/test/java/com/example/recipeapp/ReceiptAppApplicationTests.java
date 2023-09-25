@@ -1,4 +1,4 @@
-package com.example.receiptapp;
+package com.example.recipeapp;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
