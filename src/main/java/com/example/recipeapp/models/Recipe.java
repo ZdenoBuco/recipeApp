@@ -24,14 +24,14 @@ public class Recipe {
     @JoinColumn(name = "", referencedColumnName = "")
     private List<Ingredient> ingredients;
     private String photoUrl;
-    private Date dateOfCreation;
+    private Date createdAtDate;
 
     public Recipe(String name, User user, List<Ingredient> ingredients, String photoUrl){
         this.name = name;
         this.user = user;
         this.ingredients = ingredients;
         this.photoUrl = photoUrl;
-        dateOfCreation = new Date(System.currentTimeMillis());
+        createdAtDate = new Date(System.currentTimeMillis());
     }
     public void addComment(Comment comment) {
         this.comments.add(comment);
