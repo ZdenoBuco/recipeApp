@@ -14,16 +14,21 @@ public class Recipe {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String name;
+
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_email", referencedColumnName = "email")
     private User user;
+
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "comment_id", referencedColumnName = "id")
     private List<Comment> comments;
+
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "ingredient_name", referencedColumnName = "name")
     private List<Ingredient> ingredients;
+
     private String photoUrl;
     private Date createdAtDate;
 
