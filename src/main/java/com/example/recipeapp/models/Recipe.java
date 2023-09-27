@@ -12,16 +12,15 @@ import java.util.List;
 @NoArgsConstructor
 public class Recipe {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "", referencedColumnName = "")
+    @ManyToOne
+    @JoinColumn(name = "user_email", referencedColumnName = "email")
     private User user;
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "", referencedColumnName = "")
+    @OneToMany(mappedBy = "recipe", cascade = CascadeType.ALL)
     private List<Comment> comments;
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "", referencedColumnName = "")
+    @OneToMany(mappedBy = "recipe", cascade = CascadeType.ALL)
     private List<Ingredient> ingredients;
     private String photoUrl;
     private Date createdAtDate;
