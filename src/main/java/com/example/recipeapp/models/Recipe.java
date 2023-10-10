@@ -1,5 +1,6 @@
 package com.example.recipeapp.models;
 
+import com.example.recipeapp.DTOs.RecipeDTO;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,16 +18,16 @@ public class Recipe {
 
     private String name;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "user_email", referencedColumnName = "email")
     private User user;
 
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "comment_id", referencedColumnName = "id")
+    @JoinColumn(name = "recipe_id", referencedColumnName = "id")
     private List<Comment> comments;
 
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "ingredient_name", referencedColumnName = "name")
+    @JoinColumn(name = "recipe_name", referencedColumnName = "name")
     private List<Ingredient> ingredients;
 
     private String photoUrl;
@@ -37,6 +38,13 @@ public class Recipe {
         this.user = user;
         this.ingredients = ingredients;
         this.photoUrl = photoUrl;
+        createdAtDate = new Date(System.currentTimeMillis());
+    }
+    public Recipe(RecipeDTO recipeDTO){
+        this.name = recipeDTO.getName();
+        this.user = recipeDTO.getUser();
+        this.ingredients = recipeDTO.getIngredients();
+        this.photoUrl = recipeDTO.getImgUrl();
         createdAtDate = new Date(System.currentTimeMillis());
     }
     public void addComment(Comment comment) {
