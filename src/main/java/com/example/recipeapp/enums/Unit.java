@@ -1,5 +1,6 @@
 package com.example.recipeapp.enums;
 
 public enum Unit {
-    KG,G,L;
+    KG, DAG, G, L, DCL, ML, TOTASTE, PINCHOF, TABLESPOON, TEASPOON
 }
+
