@@ -18,16 +18,17 @@ import java.util.List;
 public class Ingredient {
     @Id
     private String name;
-    private int amount;
+
+    private Integer amount;
     @Enumerated(EnumType.STRING)
     private Unit unit;
 
-    public Ingredient(String name, int amount, Unit unit) {
+    public Ingredient(String name, Integer amount, Unit unit) {
     this.name = name;
     this.amount = amount;
     this.unit = unit;
     }
-    public void setAmount(int amount){
+    public void setAmount(Integer amount){
             this.amount = amount;
     }
 }
