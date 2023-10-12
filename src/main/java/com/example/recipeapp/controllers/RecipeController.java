@@ -14,7 +14,7 @@ public class RecipeController {
 
     @GetMapping("/recipes")
     public ResponseEntity<?> getAll(){
-        return ResponseEntity.ok(recipeService.getAll());
+        return ResponseEntity.ok().body(recipeService.getAll());
     }
     @PostMapping("/recipes")
     public ResponseEntity<?> addRecipe(@RequestBody RecipeDTO recipeDTO) {
